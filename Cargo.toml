@@ -5,6 +5,8 @@ authors = ["Carlos Chacin"]
 edition = "2018"
 # readme = "README.md"
 repository = "https://github.com/Hermitter/roku-ecp-rs"
+keywords = ["roku", "tv", "remote"]
 license = "MIT"
+description = "A library for the Roku External Control Protocol (ECP) "
 
 [dependencies]
