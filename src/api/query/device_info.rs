@@ -1,8 +1,4 @@
-//! Retrieves device information similar to that returned by [roDeviceInfo](https://developer.roku.com/en-gb/docs/references/brightscript/components/rodeviceinfo.md#!). This command is accessed using an HTTP GET.
-use crate::Device;
-use crate::Error;
-use serde::Deserialize;
-use serde_xml_rs::from_str;
+use super::*;
 
 impl Device {
     /// Retrieves device information similar to that returned by [roDeviceInfo](https://developer.roku.com/en-gb/docs/references/brightscript/components/rodeviceinfo.md#!) for BrightScript.

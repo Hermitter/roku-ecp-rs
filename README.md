@@ -7,14 +7,16 @@ A Rust crate for the Roku External Control Protocol (ECP)
 List of [APIs](https://developer.roku.com/en-gb/docs/developer-program/debugging/external-control-api.md#external-control-service-commands) to implement.
 ## General:
 
-- [ ] query/media-player
+- [x] query/media-player
 - [ ] keydown/\<KEY>
 - [ ] keyup/\<KEY>
 - [ ] keypress/\<KEY>
 - [ ] launch/\<APP_ID>
 - [ ] install/\<APP_ID>
 - [X] query/device-info
-- [ ] query/icon/\<APP_ID>
+- [x] query/icon/\<APP_ID>
+- [ ] query/active-app/\<APP_ID>
+- [ ] query/apps/\<APP_ID>
 - [ ] input
 - [ ] search
 
