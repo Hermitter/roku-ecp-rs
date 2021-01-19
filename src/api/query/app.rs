@@ -1,8 +1,8 @@
 use super::{from_str, Deserialize, Device, Error};
 
 impl Device {
-    /// Returns an icon corresponding to the application identified by appID. The binary data will contain
-    /// and identifying MIME-type header.
+    /// Returns an icon corresponding to the application identified by appID. The binary
+    /// data will contain an identifying MIME-type header.
     pub async fn icon(&self, app_id: u32) -> Result<Vec<u8>, Error> {
         Ok(self
             .http
