@@ -1,4 +1,4 @@
-use super::*;
+use super::{from_str, Deserialize, Device, Error};
 
 impl Device {
     /// Returns a child element named 'player' that identifies the media player state. The information returned includes the current stream segment and position of the content being played, the running time of the content, audio format, and buffering.

@@ -13,7 +13,13 @@ fn main() {
         // let media_player = roku.media_player().await;
         // println!("{:#?}", media_player);
 
-        // let app_icon = roku.app_icon(12).await;
+        // let app_icon = roku.icon(12).await;
         // println!("{:#?}", app_icon);
+
+        // let active_app = roku.active_app().await;
+        // println!("{:?}", active_app);
+
+        let apps = roku.apps().await;
+        println!("{:?}", apps);
     });
 }

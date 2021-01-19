@@ -15,8 +15,8 @@ List of [APIs](https://developer.roku.com/en-gb/docs/developer-program/debugging
 - [ ] install/\<APP_ID>
 - [X] query/device-info
 - [x] query/icon/\<APP_ID>
-- [ ] query/active-app/\<APP_ID>
-- [ ] query/apps/\<APP_ID>
+- [x] query/active-app/\<APP_ID>
+- [x] query/apps/\<APP_ID>
 - [ ] input
 - [ ] search
 
@@ -24,3 +24,7 @@ List of [APIs](https://developer.roku.com/en-gb/docs/developer-program/debugging
 - [ ] query/tv-channels
 - [ ] query/tv-active-channel
 - [ ] launch/tvinput.dtv
+
+# Credits
+
+[@carloabelli's roku crate](https://github.com/carloabelli/roku) for providing a great reference.

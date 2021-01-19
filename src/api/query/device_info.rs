@@ -1,4 +1,4 @@
-use super::*;
+use super::{from_str, Deserialize, Device, Error};
 
 impl Device {
     /// Retrieves device information similar to that returned by [roDeviceInfo](https://developer.roku.com/en-gb/docs/references/brightscript/components/rodeviceinfo.md#!) for BrightScript.
