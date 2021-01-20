@@ -8,9 +8,9 @@ List of [APIs](https://developer.roku.com/en-gb/docs/developer-program/debugging
 ## General:
 
 - [x] query/media-player
-- [ ] keydown/\<KEY>
-- [ ] keyup/\<KEY>
-- [ ] keypress/\<KEY>
+- [x] keydown/\<KEY>
+- [x] keyup/\<KEY>
+- [x] keypress/\<KEY>
 - [ ] launch/\<APP_ID>
 - [ ] install/\<APP_ID>
 - [X] query/device-info
