@@ -12,8 +12,7 @@ enum KeyEvent {
 }
 
 impl Device {
-    // TODO:
-    //  /// Send a key press event for each character in the string
+    /// Sends a key press event for each character in the string
     pub async fn send_string(&self, text: &str) -> Result<(), Error> {
         for key in text.as_bytes() {
             self.key_down(Key::Lit(*key as char)).await?;
@@ -54,6 +53,8 @@ impl Device {
         Ok(())
     }
 }
+
+// TODO: add docs for keys that aren't obvious.
 /// Supported key values for Roku devices.
 #[derive(Debug)]
 pub enum Key {
@@ -97,8 +98,9 @@ use std::fmt;
 impl fmt::Display for Key {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            // certain printable characters need to be url encoded. Ex. '$' -> "%24"
+            // Return ASCII value or a URL-encoded character.
             Key::Lit(char) => write!(f, "Lit_{}", urlencoding::encode(&char.to_string())),
+
             // default is to use the enum variant name as a string
             _ => write!(f, "{:?}", self),
         }
