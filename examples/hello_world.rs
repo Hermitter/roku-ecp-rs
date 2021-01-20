@@ -22,7 +22,7 @@ fn main() {
         // let apps = roku.apps().await;
         // println!("{:#?}", apps);
 
-        // roku.key_press(Key::Home).await.unwrap();
+        roku.key_press(Key::Play).await.unwrap();
         // roku.send_string("Hello @user").await.unwrap();
         // roku.key_press(Key::VolumeDown).await.unwrap();
     });

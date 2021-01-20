@@ -18,7 +18,10 @@ pub struct Device {
 
 impl Device {
     /// Constructs a client to communicate with a Roku device. This assumes the device is on the local network.
-    pub fn new(ip: &str) -> Device {
+    pub fn new<T>(ip: T) -> Device
+    where
+        T: std::net::ToSocketAddrs + std::fmt::Display,
+    {
         Device {
             url: format!("http://{}:{}", ip, ECP_PORT),
             http: Client::new(),
