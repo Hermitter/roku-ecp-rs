@@ -2,11 +2,13 @@ pub use error::Error;
 use surf::Client;
 mod api;
 mod error;
+pub use api::keys::Key;
 
 /// HTTP port for communicating with the ECP RESTful service.
 const ECP_PORT: &str = "8060";
 
 /// A Roku device to communicate with via the [External Control Protocol](https://developer.roku.com/docs/developer-program/debugging/external-control-api.md).
+#[derive(Debug)]
 pub struct Device {
     /// Base URL of the Roku device's IP and port.
     pub url: String,

@@ -1,9 +1,9 @@
 use async_std::task;
-use roku_ecp;
+use roku_ecp::{Device, Key};
 
 fn main() {
     task::block_on(async {
-        let roku = roku_ecp::Device::new("192.168.1.138");
+        let roku = Device::new("192.168.1.138");
 
         // roku.ping().await.unwrap();
 
@@ -19,7 +19,11 @@ fn main() {
         // let active_app = roku.active_app().await;
         // println!("{:#?}", active_app);
 
-        let apps = roku.apps().await;
-        println!("{:#?}", apps);
+        // let apps = roku.apps().await;
+        // println!("{:#?}", apps);
+
+        // roku.key_press(Key::Home).await.unwrap();
+        // roku.send_string("Hello @user").await.unwrap();
+        // roku.key_press(Key::VolumeDown).await.unwrap();
     });
 }
