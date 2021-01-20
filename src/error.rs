@@ -1,13 +1,16 @@
 use std::{error::Error as StdError, fmt};
 
+/// Crate errors.
 #[derive(Debug)]
 pub enum Error {
     /// Some unspecified error.
     Any(Box<dyn StdError + Send + Sync + 'static>),
-    /// http request to Roku device did not respond with OK 200 status.
+    /// HTTP request to Roku device did not respond with OK 200 status.
     Non200Status { status: u16 },
     /// Cannot derive a struct from the given string.
     UnableToDerive { description: String },
+    /// Tried to parse an invalid URL.
+    InvalidUrl(String),
 }
 
 impl<'a> fmt::Display for Error {
@@ -18,6 +21,9 @@ impl<'a> fmt::Display for Error {
             }
             Error::UnableToDerive { description } => {
                 write!(f, "Unable to derive struct from:\n {}", description)
+            }
+            Error::InvalidUrl(bad_url) => {
+                write!(f, "Tried to parse an invalid URL: {}", bad_url)
             }
             _ => write!(f, "TODO"),
         }
@@ -39,5 +45,12 @@ impl From<surf::Error> for Error {
         Error::Non200Status {
             status: res.status().into(),
         }
+    }
+}
+
+use url;
+impl From<url::ParseError> for Error {
+    fn from(bad_url: url::ParseError) -> Self {
+        Error::InvalidUrl(bad_url.to_string())
     }
 }

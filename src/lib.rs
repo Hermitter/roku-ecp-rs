@@ -1,8 +1,11 @@
+// TODO: implement Url crate functions
 pub use error::Error;
 use surf::Client;
 mod api;
 mod error;
 pub use api::keys::Key;
+pub use api::search;
+use url::Url;
 
 /// HTTP port for communicating with the ECP RESTful service.
 const ECP_PORT: &str = "8060";
@@ -11,29 +14,29 @@ const ECP_PORT: &str = "8060";
 #[derive(Debug)]
 pub struct Device {
     /// Base URL of the Roku device's IP and port.
-    pub url: String,
+    pub url: url::Url,
     /// Http client for communicating with Roku device.
     http: Client,
 }
 
 impl Device {
     /// Constructs a client to communicate with a Roku device. This assumes the device is on the local network.
-    pub fn new<T>(ip: T) -> Device
+    pub fn new<T>(ip: T) -> Result<Device, Error>
     where
         T: std::net::ToSocketAddrs + std::fmt::Display,
     {
-        Device {
-            url: format!("http://{}:{}", ip, ECP_PORT),
+        Ok(Device {
+            url: Url::parse(&format!("http://{}:{}", ip, ECP_PORT))?,
             http: Client::new(),
-        }
+        })
     }
 
     /// Constructs a client to communicate with a Roku at the specified URL .
-    pub fn from_url(url: &str) -> Device {
-        Device {
-            url: url.to_owned(),
+    pub fn from_url(url: &str) -> Result<Device, Error> {
+        Ok(Device {
+            url: Url::parse(url)?,
             http: Client::new(),
-        }
+        })
     }
 
     /// Ping the Roku device to test the connection.
