@@ -17,9 +17,9 @@ fn main() {
         // println!("{:#?}", app_icon);
 
         // let active_app = roku.active_app().await;
-        // println!("{:?}", active_app);
+        // println!("{:#?}", active_app);
 
         let apps = roku.apps().await;
-        println!("{:?}", apps);
+        println!("{:#?}", apps);
     });
 }

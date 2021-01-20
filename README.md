@@ -27,4 +27,4 @@ List of [APIs](https://developer.roku.com/en-gb/docs/developer-program/debugging
 
 # Credits
 
-[@carloabelli's roku crate](https://github.com/carloabelli/roku) for providing a great reference.
+[@carloabelli's roku crate](https://github.com/carloabelli/roku) which was used as a reference.

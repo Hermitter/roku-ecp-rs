@@ -22,15 +22,15 @@ impl Device {
         Ok(from_str(&response)?)
     }
 
-    /// Returns information on all installed apps.
-    pub async fn apps(&self) -> Result<Apps, Error> {
+    /// Returns a list of all currently installed apps.
+    pub async fn apps(&self) -> Result<Vec<App>, Error> {
         let response = self
             .http
             .get(format!("{}/query/apps", self.url))
             .recv_string()
             .await?;
 
-        Ok(from_str(&response)?)
+        Ok(from_str::<Apps>(&response)?.apps)
     }
 }
 
