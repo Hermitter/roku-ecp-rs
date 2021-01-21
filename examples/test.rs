@@ -26,10 +26,10 @@ fn main() {
         // roku.send_string("Hello @user").await.unwrap();
         // roku.key_press(Key::VolumeDown).await.unwrap();
 
-        let search = SearchRequest::new("Game Of Thrones")
-            .providers(vec!["HBO Max"])
+        let search = SearchRequest::new("Rick and Morty")
+            .providers(&["Hulu", "HBO Max"])
             .search_type(SearchType::TvShow)
-            .season(1)
+            .season(2)
             .launch()
             .match_any();
 

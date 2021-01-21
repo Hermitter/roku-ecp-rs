@@ -4,7 +4,7 @@ use url::form_urlencoded;
 
 impl Device {
     /// Sends a URL query string from the search properties given.
-    pub async fn search<'a>(&self, search: SearchRequest<'a>) -> Result<(), Error> {
+    pub async fn search<'a, 'b>(&self, search: SearchRequest<'a, 'b>) -> Result<(), Error> {
         let mut url = self.url.join("search/browse")?;
         let mut query = form_urlencoded::Serializer::new(String::new());
 
@@ -66,7 +66,7 @@ pub enum SearchType {
 /// Describes a search to the Roku Search UI to find and
 /// (optionally) launch content from an available provider.
 #[derive(Debug, Default)]
-pub struct SearchRequest<'a> {
+pub struct SearchRequest<'a, 'b> {
     /// The content title, channel name, person name, or keyword to be searched.
     pub keyword: &'a str,
     // - TODO: check if the link below is valid.
@@ -98,19 +98,19 @@ pub struct SearchRequest<'a> {
     /// One or more Roku channel IDs specifying the preferred/target provider.
     /// The search will iterate through the ids until a matching provider is
     /// found.
-    pub provider_ids: Option<Vec<&'a str>>,
+    pub provider_ids: Option<&'b [&'a str]>,
     /// One or more Roku channel titles specifying the preferred/target
     /// provider. Titles must be a full case-insensitive match. The search will
     /// iterate through the channel titles until a matching provider is found.
-    pub providers: Option<Vec<&'a str>>,
+    pub providers: Option<&'b [&'a str]>,
     /// Specifies that if the search content is found and a **specified provider
     /// is found/installed**, the provider's channel should be launched.
     pub launch: bool,
 }
 
-impl<'a> SearchRequest<'a> {
+impl<'a, 'b> SearchRequest<'a, 'b> {
     /// Creates a search request for a specific keyword.
-    pub fn new(keyword: &'a str) -> SearchRequest<'a> {
+    pub fn new(keyword: &'a str) -> SearchRequest<'a, 'b> {
         SearchRequest {
             keyword,
             ..Default::default()
@@ -118,57 +118,57 @@ impl<'a> SearchRequest<'a> {
     }
 
     /// Specify the type of item being searched.
-    pub fn search_type(mut self, search_type: SearchType) -> SearchRequest<'a> {
+    pub fn search_type(mut self, search_type: SearchType) -> SearchRequest<'a, 'b> {
         self.search_type = Some(search_type);
         self
     }
 
     /// Have the search prioritize a list of providers from their IDs. The search will go down
     /// the list until a listed provider is found.
-    pub fn provider_ids(mut self, ids: Vec<&'a str>) -> SearchRequest<'a> {
+    pub fn provider_ids(mut self, ids: &'b [&'a str]) -> SearchRequest<'a, 'b> {
         self.provider_ids = Some(ids);
         self
     }
 
     /// Have the search prioritize a list of providers from their title. The search will go down
     /// the list until a listed provider is found.
-    pub fn providers(mut self, titles: Vec<&'a str>) -> SearchRequest<'a> {
+    pub fn providers(mut self, titles: &'b [&'a str]) -> SearchRequest<'a, 'b> {
         self.providers = Some(titles);
         self
     }
 
     /// Set the season of a TV show to search for.
-    pub fn season(mut self, season: u32) -> SearchRequest<'a> {
+    pub fn season(mut self, season: u32) -> SearchRequest<'a, 'b> {
         self.season = Some(season);
         self
     }
 
     /// Set the TMS ID for a movie, TV show, or person.
-    pub fn tmsid(mut self, id: &'a str) -> SearchRequest<'a> {
+    pub fn tmsid(mut self, id: &'a str) -> SearchRequest<'a, 'b> {
         self.tmsid = Some(id);
         self
     }
 
     /// Automatically select the first result from the search query.
-    pub fn match_any(mut self) -> SearchRequest<'a> {
+    pub fn match_any(mut self) -> SearchRequest<'a, 'b> {
         self.match_any = true;
         self
     }
 
     /// Treat the Search keyword as a title instead.
-    pub fn is_title(mut self) -> SearchRequest<'a> {
+    pub fn is_title(mut self) -> SearchRequest<'a, 'b> {
         self.is_title = true;
         self
     }
 
     /// Launch the search result, if found with a specified provider that's installed.
-    pub fn launch(mut self) -> SearchRequest<'a> {
+    pub fn launch(mut self) -> SearchRequest<'a, 'b> {
         self.launch = true;
         self
     }
 
     /// Include unavailable listing in search results.
-    pub fn show_unavailable(mut self) -> SearchRequest<'a> {
+    pub fn show_unavailable(mut self) -> SearchRequest<'a, 'b> {
         self.show_unavailable = true;
         self
     }
