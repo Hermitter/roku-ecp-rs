@@ -1,14 +1,24 @@
 use super::{from_str, Deserialize, Device, Error};
 
 impl Device {
-    /// Returns an icon corresponding to the application identified by appID. The binary
-    /// data will contain an identifying MIME-type header.
-    pub async fn icon(&self, app_id: u32) -> Result<Vec<u8>, Error> {
-        Ok(self
+    /// Returns an icon corresponding to the Roku application identified by appID.
+    pub async fn icon(&self, app_id: u32) -> Result<Icon, Error> {
+        let mut request = self
             .http
-            .get(format!("{}/query/icon/{}", self.url, app_id))
-            .recv_bytes()
-            .await?)
+            .get(self.url.join(&format!("query/icon/{}", app_id))?)
+            .send()
+            .await?;
+
+        let bytes = request.body_bytes().await?;
+
+        let mime_type: String = match request.header("content-type") {
+            Some(m) => m[0].to_string(),
+            // [octet-steam](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#applicationoctet-stream)
+            // is used to describe an unknown binary file.
+            None => String::from("application/octet-stream"),
+        };
+
+        Ok(Icon { bytes, mime_type })
     }
 
     /// Returns information on the currently opened app.
@@ -32,6 +42,16 @@ impl Device {
 
         Ok(from_str::<Apps>(&response)?.apps)
     }
+}
+
+/// An icon that corresponds to a Roku application.
+#[derive(Debug)]
+pub struct Icon {
+    /// The [MIME-type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)
+    /// describing the icon's file type.
+    pub mime_type: String,
+    /// The byte representation of the icon.
+    pub bytes: Vec<u8>,
 }
 
 #[derive(Debug, Deserialize)]

@@ -13,8 +13,8 @@ fn main() {
         // let media_player = roku.media_player().await;
         // println!("{:#?}", media_player);
 
-        // let app_icon = roku.icon(12).await;
-        // println!("{:#?}", app_icon);
+        // let app_icon = roku.icon(12).await.unwrap();
+        // println!("{:?}", app_icon);
 
         // let active_app = roku.active_app().await;
         // println!("{:#?}", active_app);
@@ -26,13 +26,12 @@ fn main() {
         // roku.send_string("Hello @user").await.unwrap();
         // roku.key_press(Key::VolumeDown).await.unwrap();
 
-        let search = SearchRequest::new("Rick and Morty")
-            .providers(&["Hulu", "HBO Max"])
-            .search_type(SearchType::TvShow)
-            .season(2)
-            .launch()
-            .match_any();
-
-        roku.search(search).await.unwrap();
+        // let search = SearchRequest::new("Rick and Morty")
+        //     .providers(&["Hulu", "HBO Max"])
+        //     .search_type(SearchType::TvShow)
+        //     .season(2)
+        //     .launch()
+        //     .match_any();
+        // roku.search(search).await.unwrap();
     });
 }
