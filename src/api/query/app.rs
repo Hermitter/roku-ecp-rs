@@ -25,7 +25,7 @@ impl Device {
     pub async fn active_app(&self) -> Result<ActiveApp, Error> {
         let response = self
             .http
-            .get(format!("{}/query/active-app", self.url))
+            .get(self.url.join("query/active-app")?)
             .recv_string()
             .await?;
 
@@ -36,7 +36,7 @@ impl Device {
     pub async fn apps(&self) -> Result<Vec<App>, Error> {
         let response = self
             .http
-            .get(format!("{}/query/apps", self.url))
+            .get(self.url.join("query/apps")?)
             .recv_string()
             .await?;
 

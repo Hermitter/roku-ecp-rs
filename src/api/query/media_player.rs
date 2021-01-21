@@ -5,7 +5,7 @@ impl Device {
     pub async fn media_player(&self) -> Result<MediaPlayer, Error> {
         let response = self
             .http
-            .get(format!("{}/query/media-player", self.url))
+            .get(self.url.join("query/media-player")?)
             .recv_string()
             .await?;
 

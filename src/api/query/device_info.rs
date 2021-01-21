@@ -5,7 +5,7 @@ impl Device {
     pub async fn device_info(&self) -> Result<DeviceInfo, Error> {
         let response = self
             .http
-            .get(format!("{}/query/device-info", self.url))
+            .get(self.url.join("query/device-info")?)
             .recv_string()
             .await?;
 
