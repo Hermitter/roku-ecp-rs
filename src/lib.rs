@@ -1,7 +1,3 @@
-#![doc(
-    html_logo_url = "https://raw.githubusercontent.com/hermitter/roku-ecp-rs/assets/roku-icon.svg?sanitize=true"
-)]
-
 pub use error::Error;
 use surf::Client;
 mod api;
