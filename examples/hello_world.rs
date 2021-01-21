@@ -1,5 +1,5 @@
 use async_std::task;
-use roku_ecp::{Device, Key, SearchRequest};
+use roku_ecp::{Device, Key, SearchRequest, SearchType};
 
 fn main() {
     task::block_on(async {
@@ -26,7 +26,13 @@ fn main() {
         // roku.send_string("Hello @user").await.unwrap();
         // roku.key_press(Key::VolumeDown).await.unwrap();
 
-        let search = SearchRequest::new("Hello").providers(vec!["Netflix", "Hulu"]);
+        let search = SearchRequest::new("House")
+            .providers(vec!["Netflix", "Hulu", "NBC"])
+            .search_type(SearchType::TvShow)
+            .season(5)
+            .launch()
+            .match_any();
+
         roku.search(search).await.unwrap();
     });
 }

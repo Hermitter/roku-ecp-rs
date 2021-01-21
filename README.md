@@ -8,8 +8,8 @@ A Rust crate for the Roku External Control Protocol (ECP).
 
 # API Roadmap
 List of [APIs](https://developer.roku.com/en-gb/docs/developer-program/debugging/external-control-api.md#external-control-service-commands) to implement.
-## General:
 
+## General:
 - [x] query/media-player
 - [x] keydown/\<KEY>
 - [x] keyup/\<KEY>
@@ -21,7 +21,7 @@ List of [APIs](https://developer.roku.com/en-gb/docs/developer-program/debugging
 - [x] query/active-app/\<APP_ID>
 - [x] query/apps/\<APP_ID>
 - [ ] input
-- [ ] search
+- [x] search
 
 ## TV:
 > Feel free to make a PR for these features. I do not have a Roku TV to test.

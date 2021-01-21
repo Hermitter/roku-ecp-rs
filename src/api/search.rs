@@ -10,7 +10,7 @@ impl Device {
 
         query.append_pair("keyword", search.keyword);
         if search.is_title {
-            query.append_pair("keyword", "true");
+            query.append_pair("title", "true");
         }
         if search.show_unavailable {
             query.append_pair("show-unavailable", "true");
@@ -117,6 +117,12 @@ impl<'a> SearchRequest<'a> {
         }
     }
 
+    /// Specify the type of item being searched.
+    pub fn search_type(mut self, search_type: SearchType) -> SearchRequest<'a> {
+        self.search_type = Some(search_type);
+        self
+    }
+
     /// Have the search prioritize a list of providers from their IDs. The search will go down
     /// the list until a listed provider is found.
     pub fn provider_ids(mut self, ids: Vec<&'a str>) -> SearchRequest<'a> {
@@ -145,7 +151,7 @@ impl<'a> SearchRequest<'a> {
 
     /// Automatically select the first result from the search query.
     pub fn match_any(mut self) -> SearchRequest<'a> {
-        self.is_title = true;
+        self.match_any = true;
         self
     }
 
