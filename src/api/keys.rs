@@ -16,7 +16,6 @@ impl Device {
     pub async fn send_string(&self, text: &str) -> Result<(), Error> {
         for key in text.as_bytes() {
             self.key_down(Key::Lit(*key as char)).await?;
-            println!("{}", key);
         }
 
         Ok(())
@@ -46,7 +45,7 @@ impl Device {
         };
 
         self.http
-            .post(format!("{}/{}/{}", self.url, key_event, key))
+            .post(self.url.join(&format!("{}/{}", key_event, key))?)
             .recv_string()
             .await?;
 
@@ -88,9 +87,6 @@ pub enum Key {
     InputAV1,
     /// Any printable character.
     /// Officially, Roku only supports valid **UTF-8**.
-    ///
-    /// **Non-ASCII** values will be URL-encoded when printed.
-    /// `Ex. '$' -> "%24"`
     Lit(char),
 }
 
@@ -98,9 +94,7 @@ use std::fmt;
 impl fmt::Display for Key {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            // Return ASCII value or a URL-encoded character.
-            Key::Lit(char) => write!(f, "Lit_{}", urlencoding::encode(&char.to_string())),
-
+            Key::Lit(char) => write!(f, "Lit_{}", &char.to_string()),
             // default is to use the enum variant name as a string
             _ => write!(f, "{:?}", self),
         }
