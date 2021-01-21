@@ -1,9 +1,9 @@
 use async_std::task;
-use roku_ecp::{Device, Key};
+use roku_ecp::{Device, Key, SearchRequest};
 
 fn main() {
     task::block_on(async {
-        let roku = Device::new("192.168.1.138");
+        let roku = Device::new("192.168.1.138").unwrap();
 
         // roku.ping().await.unwrap();
 
@@ -25,5 +25,8 @@ fn main() {
         // roku.key_press(Key::Play).await.unwrap();
         // roku.send_string("Hello @user").await.unwrap();
         // roku.key_press(Key::VolumeDown).await.unwrap();
+
+        let search = SearchRequest::new("Hello").providers(vec!["Netflix", "Hulu"]);
+        roku.search(search).await.unwrap();
     });
 }

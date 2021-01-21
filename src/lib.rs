@@ -4,7 +4,7 @@ use surf::Client;
 mod api;
 mod error;
 pub use api::keys::Key;
-pub use api::search;
+pub use api::search::{SearchRequest, SearchType};
 use url::Url;
 
 /// HTTP port for communicating with the ECP RESTful service.
