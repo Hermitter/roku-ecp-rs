@@ -103,8 +103,8 @@ pub struct SearchRequest<'a> {
     /// provider. Titles must be a full case-insensitive match. The search will
     /// iterate through the channel titles until a matching provider is found.
     pub providers: Option<Vec<&'a str>>,
-    /// Specifies that if the search content is found and a specified provider
-    /// is available, the provider channel should be launched.
+    /// Specifies that if the search content is found and a **specified provider
+    /// is found/installed**, the provider's channel should be launched.
     pub launch: bool,
 }
 
@@ -161,7 +161,7 @@ impl<'a> SearchRequest<'a> {
         self
     }
 
-    /// Launch the search result, if found with an available provider.
+    /// Launch the search result, if found with a specified provider that's installed.
     pub fn launch(mut self) -> SearchRequest<'a> {
         self.launch = true;
         self
