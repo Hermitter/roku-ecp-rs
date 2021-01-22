@@ -11,8 +11,7 @@ A Rust crate for Roku's [External Control Protocol]((https://developer.roku.com/
 - [ ] Documentation
 
 # Available APIs
-> Some APIs might be missing since I could not find concrete documentation on
-> the ECP.
+> Some APIs might be missing since I could not find concrete documentation.
 
 ## General:
 - [x] query/media-player
