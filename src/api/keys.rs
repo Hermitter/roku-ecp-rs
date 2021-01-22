@@ -12,8 +12,8 @@ enum KeyEvent {
 }
 
 impl Device {
-    /// Sends a key press event for each character in the string
-    pub async fn send_string(&self, text: &str) -> Result<(), Error> {
+    /// Sends a key press event for each character in the string.
+    pub async fn key_press_string(&self, text: &str) -> Result<(), Error> {
         for key in text.as_bytes() {
             self.key_down(Key::Lit(*key as char)).await?;
         }

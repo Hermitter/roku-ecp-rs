@@ -23,7 +23,7 @@ fn main() {
         // println!("{:#?}", apps);
 
         // roku.key_press(Key::Play).await.unwrap();
-        // roku.send_string("Hello @user").await.unwrap();
+        // roku.key_press_string("Hello @user").await.unwrap();
         // roku.key_press(Key::VolumeDown).await.unwrap();
 
         // let search = SearchRequest::new("Rick and Morty")
@@ -32,6 +32,10 @@ fn main() {
         //     .season(2)
         //     .launch()
         //     .match_any();
+
         // roku.search(search).await.unwrap();
+
+        // /launch/dev?streamformat=mp4&url=http%3A%2F%2Fvideo.ted.com%2Ftalks%2Fpodcast%2FVilayanurRamachandran_2007_480.mp4"
+        // roku.launch(11).await.unwrap();
     });
 }
