@@ -4,19 +4,15 @@
 [![Documentation](https://docs.rs/roku-ecp/badge.svg)](https://docs.rs/roku-ecp/)
 [![Crate](https://img.shields.io/crates/v/roku-ecp.svg)](https://crates.io/crates/roku-ecp)
 
-A Rust crate for the Roku External Control Protocol (ECP).
+A Rust crate for Roku's [External Control Protocol]((https://developer.roku.com/en-gb/docs/developer-program/debugging/external-control-api.md)).
 
 # ToDos
 - [ ] Examples
 - [ ] Documentation
-- [ ] Install/Launch APIs
 
-# API Roadmap
-> Some APIs might be missing since I could not find concrete documentation on ECP.
-
-List of
-[APIs](https://developer.roku.com/en-gb/docs/developer-program/debugging/external-control-api.md#external-control-service-commands)
-to implement. 
+# Available APIs
+> Some APIs might be missing since I could not find concrete documentation on
+> the ECP.
 
 ## General:
 - [x] query/media-player
@@ -24,7 +20,7 @@ to implement.
 - [x] keyup/\<KEY>
 - [x] keypress/\<KEY>
 - [x] launch/\<APP_ID>
-- [ ] install/\<APP_ID>
+- [x] install/\<APP_ID>
 - [X] query/device-info
 - [x] query/icon/\<APP_ID>
 - [x] query/active-app/\<APP_ID>
