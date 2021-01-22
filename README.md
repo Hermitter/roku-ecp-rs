@@ -4,7 +4,7 @@
 [![Documentation](https://docs.rs/roku-ecp/badge.svg)](https://docs.rs/roku-ecp/)
 [![Crate](https://img.shields.io/crates/v/roku-ecp.svg)](https://crates.io/crates/roku-ecp)
 
-A Rust crate for Roku's [External Control Protocol]((https://developer.roku.com/en-gb/docs/developer-program/debugging/external-control-api.md)).
+A Rust crate for Roku's [External Control Protocol](https://developer.roku.com/en-gb/docs/developer-program/debugging/external-control-api.md).
 
 # ToDos
 - [ ] Examples
