@@ -1,3 +1,4 @@
+pub mod apps;
 pub mod keys;
 pub mod query;
 /// Wrapper over the [ECP Search

@@ -35,7 +35,7 @@ fn main() {
 
         // roku.search(search).await.unwrap();
 
-        // /launch/dev?streamformat=mp4&url=http%3A%2F%2Fvideo.ted.com%2Ftalks%2Fpodcast%2FVilayanurRamachandran_2007_480.mp4"
-        // roku.launch(11).await.unwrap();
+        let params = &[("contentID", "my_content"), ("options", "my_options")];
+        roku.launch("dev", Some(params)).await.unwrap();
     });
 }
