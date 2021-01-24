@@ -6,8 +6,14 @@ fn main() {
         let ip = std::env::var("ROKU_DEVICE_IP").expect("Could not find $ROKU_DEVICE_IP");
         let roku = Device::new(ip).unwrap();
 
-        let search = SearchRequest::new("Rick and Morty")
-            .providers(&["Hulu", "HBO Max", "Netflix"])
+        // get a list of installed apps
+        let apps = roku.apps().await.unwrap();
+        let apps: Vec<&str> = apps.iter().map(|a| String::as_str(&a.name)).collect();
+        println!("Installed Apps: {:#?}", apps);
+
+        // search for keyword with priority given amongst installed apps
+        let search = SearchRequest::new("Solar Opposites")
+            .providers(&apps)
             .search_type(SearchType::TvShow)
             .season(2)
             .match_any()
