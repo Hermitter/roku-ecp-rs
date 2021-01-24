@@ -1,11 +1,11 @@
 use std::{error::Error as StdError, fmt};
 
-/// Crate errors.
+/// Roku communication errors.
 #[derive(Debug)]
 pub enum Error {
     /// Some unspecified error.
     Any(Box<dyn StdError + Send + Sync + 'static>),
-    /// HTTP request to Roku device did not respond with OK 200 status.
+    /// HTTP request to Roku device did not respond with an OK 200 status.
     Non200Status { status: u16 },
     /// Cannot derive a struct from the given string.
     UnableToDerive { description: String },

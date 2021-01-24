@@ -1,7 +1,7 @@
 use crate::Device;
 use crate::Error;
 
-/// Describes the types of actions a key has.
+/// Types of interactions with a key.
 enum KeyEvent {
     /// Pressing a key.
     Down,
@@ -85,7 +85,7 @@ pub enum Key {
     InputHDMI3,
     InputHDMI4,
     InputAV1,
-    /// Any printable character.
+    /// A printable character.
     /// Officially, Roku only supports valid **UTF-8**.
     Lit(char),
 }
@@ -95,7 +95,7 @@ impl fmt::Display for Key {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Key::Lit(char) => write!(f, "Lit_{}", &char.to_string()),
-            // default is to use the enum variant name as a string
+            // default is to use the enum variant name as the string
             _ => write!(f, "{:?}", self),
         }
     }
