@@ -10,7 +10,7 @@
 //! around the [Device](crate::Device) struct.
 //!
 //! For a full code representation, view the [examples folder](https://github.com/Hermitter/roku-ecp-rs/tree/main/examples).
-//! ```
+//! ```ignore
 //! use roku_ecp::{Device, Key, SearchRequest, SearchType};
 //! let roku = Device::new("192.168.1.138").unwrap(); // remember to change the IP.
 //!
@@ -67,10 +67,10 @@ pub use api::keys::Key;
 pub use api::search::{SearchRequest, SearchType};
 use url::Url;
 
-/// HTTP port for communicating with the ECP RESTful service.
-const ECP_PORT: &str = "8060";
+/// Default port for communicating with the ECP RESTful service.
+pub const ECP_PORT: &str = "8060";
 
-/// A Roku device.
+/// An HTTP client that communicates with a Roku device.
 #[derive(Debug)]
 pub struct Device {
     /// Base URL of the Roku device's IP and port.
@@ -80,7 +80,8 @@ pub struct Device {
 }
 
 impl Device {
-    /// Constructs a client to communicate with a Roku device. This assumes the device is on the local network.
+    /// Create an HTTP client to communicate with a Roku device. This assumes
+    /// the device URL is `http://ROKU_IP_HERE:8060`.
     pub fn new<T>(ip: T) -> Result<Device, Error>
     where
         T: std::net::ToSocketAddrs + std::fmt::Display,
@@ -91,7 +92,9 @@ impl Device {
         })
     }
 
-    /// Constructs a client to communicate with a Roku at the specified URL .
+    /// Creates an HTTP client with a specified URL to communicate with a Roku
+    /// device. Use this if the default URL
+    /// (`http://ROKU_IP_HERE:8060`) is not usable to you.
     pub fn from_url(url: &str) -> Result<Device, Error> {
         Ok(Device {
             url: Url::parse(url)?,
@@ -99,7 +102,7 @@ impl Device {
         })
     }
 
-    /// Ping the Roku device to test the connection.
+    /// Pings the Roku device to check if the device is online.
     pub async fn ping(&self) -> Result<(), Error> {
         self.http.get(&self.url).send().await?;
         Ok(())
