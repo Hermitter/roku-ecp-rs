@@ -68,7 +68,7 @@ pub use api::search::{SearchRequest, SearchType};
 use url::Url;
 
 /// Default port for communicating with the ECP RESTful service.
-pub const ECP_PORT: &str = "8060";
+pub const ECP_PORT: u16 = 8060;
 
 /// An HTTP client that communicates with a Roku device.
 #[derive(Debug)]
