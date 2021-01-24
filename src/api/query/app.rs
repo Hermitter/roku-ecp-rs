@@ -1,9 +1,11 @@
+use std::fmt::Display;
+
 use super::{from_str, Deserialize, Device, Error};
 
 impl Device {
     /// Returns an icon corresponding to the Roku application identified by the
     /// app ID.
-    pub async fn icon(&self, app_id: u32) -> Result<Icon, Error> {
+    pub async fn icon(&self, app_id: impl Display) -> Result<Icon, Error> {
         let mut request = self
             .http
             .get(self.url.join(&format!("query/icon/{}", app_id))?)
