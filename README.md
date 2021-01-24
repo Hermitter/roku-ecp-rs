@@ -6,12 +6,12 @@
 
 A Rust crate for Roku's [External Control Protocol](https://developer.roku.com/en-gb/docs/developer-program/debugging/external-control-api.md).
 
-# Usage
+<!-- # Usage
 Add the following to your Cargo.toml:
 ```
 [dependencies]
-matrix_rhal = "0.0.6"
-```
+roku_exp = "0.0.1"
+``` -->
 
 # Available APIs
 > Some APIs might be missing since I could not find concrete documentation.
