@@ -15,7 +15,7 @@ fn main() {
         let search = SearchRequest::new("Solar Opposites")
             .providers(&apps)
             .search_type(SearchType::TvShow)
-            .season(2)
+            .season(1)
             .match_any()
             .launch();
 
