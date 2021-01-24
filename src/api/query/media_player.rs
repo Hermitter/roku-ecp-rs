@@ -1,7 +1,7 @@
 use super::{from_str, Deserialize, Device, Error};
 
 impl Device {
-    /// Returns a child element named 'player' that identifies the media player state. The information returned includes the current stream segment and position of the content being played, the running time of the content, audio format, and buffering.
+    /// Information on the current media player state. This includes the current stream segment and position of the content being played, the running time of the content, audio format, and buffering.
     pub async fn media_player(&self) -> Result<MediaPlayer, Error> {
         let response = self
             .http
@@ -13,7 +13,7 @@ impl Device {
     }
 }
 
-/// Information on the current state of the media player. Schema is somewhat based on [github.com/automated-channel-testing](https://github.com/rokudev/automated-channel-testing/blob/3274e9d9a8721a536b6dfae0d56646f5a2871325/src/ecpClient/response_structure.go#L33)
+/// Information on the current state of the media player.
 #[derive(Debug, Deserialize)]
 pub struct MediaPlayer {
     pub error: String,

@@ -6,9 +6,12 @@
 
 A Rust crate for Roku's [External Control Protocol](https://developer.roku.com/en-gb/docs/developer-program/debugging/external-control-api.md).
 
-# ToDos
-- [ ] Examples
-- [ ] Documentation
+# Usage
+Add the following to your Cargo.toml:
+```
+[dependencies]
+matrix_rhal = "0.0.6"
+```
 
 # Available APIs
 > Some APIs might be missing since I could not find concrete documentation.
@@ -32,6 +35,9 @@ A Rust crate for Roku's [External Control Protocol](https://developer.roku.com/e
 - [ ] query/tv-channels
 - [ ] query/tv-active-channel
 - [ ] launch/tvinput.dtv
+
+# Finding Your Roku Device's IP
+In the main menu, navigate to `Settings > Networking > About`.
 
 # Credits
 

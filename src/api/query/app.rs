@@ -1,7 +1,8 @@
 use super::{from_str, Deserialize, Device, Error};
 
 impl Device {
-    /// Returns an icon corresponding to the Roku application identified by appID.
+    /// Returns an icon corresponding to the Roku application identified by the
+    /// app ID.
     pub async fn icon(&self, app_id: u32) -> Result<Icon, Error> {
         let mut request = self
             .http
@@ -32,7 +33,7 @@ impl Device {
         Ok(from_str(&response)?)
     }
 
-    /// Returns a list of all currently installed apps.
+    /// Returns information on all currently installed apps.
     pub async fn apps(&self) -> Result<Vec<App>, Error> {
         let response = self
             .http
@@ -53,13 +54,13 @@ pub struct Icon {
     /// The byte representation of the icon.
     pub bytes: Vec<u8>,
 }
-
 #[derive(Debug, Deserialize)]
-pub struct Apps {
+struct Apps {
     #[serde(rename = "app")]
     pub apps: Vec<App>,
 }
 
+/// The identification of a Roku app.
 #[derive(Debug, Deserialize)]
 pub struct App {
     pub id: String,
@@ -68,6 +69,7 @@ pub struct App {
     pub version: String,
 }
 
+/// Information on the currently opened application.
 #[derive(Debug, Deserialize)]
 pub struct ActiveApp {
     pub app: App,

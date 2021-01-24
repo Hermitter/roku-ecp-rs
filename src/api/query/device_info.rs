@@ -13,7 +13,7 @@ impl Device {
     }
 }
 
-/// Roku device information. Schema is somewhat based on [github.com/automated-channel-testing](https://github.com/rokudev/automated-channel-testing/blob/3274e9d9a8721a536b6dfae0d56646f5a2871325/src/ecpClient/response_mocks.go#L32)
+/// Roku device information.
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "kebab-case")]
 pub struct DeviceInfo {

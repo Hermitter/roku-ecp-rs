@@ -4,8 +4,7 @@ use std::fmt::Display;
 use url::form_urlencoded;
 
 impl Device {
-    /// Launches a channel and passes it
-    /// the parameters given . This call will only launch installed channels.
+    /// Launches a channel and passes the parameters given. This call will only launch installed channels.
     pub async fn launch<'a, T>(
         &self,
         app_id: T,
@@ -17,7 +16,7 @@ impl Device {
         self.launch_action(app_id, parameters, false).await
     }
 
-    /// Installs and launches a channel along with passing the given parameters.
+    /// Installs and launches a channel along with passing any given parameters.
     pub async fn install<'a, T>(
         &self,
         app_id: T,

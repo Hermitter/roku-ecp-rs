@@ -35,7 +35,7 @@ fn main() {
 
         // roku.search(search).await.unwrap();
 
-        let params = vec![("contentID", "my_content"), ("options", "my_options")];
-        roku.install("12", Some(&params)).await.unwrap();
+        // let params = vec![("contentID", "my_content"), ("options", "my_options")];
+        // roku.install("12", Some(&params)).await.unwrap();
     });
 }
