@@ -41,7 +41,7 @@ impl Device {
         // documented.
         if let Some(query) = parameters {
             let query = query
-                .into_iter()
+                .iter()
                 .fold(
                     form_urlencoded::Serializer::new(String::new()),
                     |mut query, q| {
