@@ -4,7 +4,7 @@ use url::form_urlencoded;
 
 impl Device {
     /// Launches a channel and passes the parameters given. This call will only launch installed channels.
-    pub async fn launch<'a, T>(
+    pub async fn launch<'a>(
         &self,
         app_id: &str,
         parameters: Option<&[(&'a str, &'a str)]>,
@@ -13,7 +13,7 @@ impl Device {
     }
 
     /// Installs and launches a channel along with passing any given parameters.
-    pub async fn install<'a, T>(
+    pub async fn install<'a>(
         &self,
         app_id: &str,
         parameters: Option<&[(&'a str, &'a str)]>,
