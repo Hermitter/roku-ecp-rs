@@ -30,7 +30,6 @@ impl<'a> fmt::Display for Error {
     }
 }
 
-use serde_xml_rs;
 impl From<serde_xml_rs::Error> for Error {
     fn from(err: serde_xml_rs::Error) -> Self {
         Error::UnableToDerive {
@@ -39,7 +38,6 @@ impl From<serde_xml_rs::Error> for Error {
     }
 }
 
-use surf;
 impl From<surf::Error> for Error {
     fn from(res: surf::Error) -> Self {
         Error::Non200Status {
@@ -48,7 +46,6 @@ impl From<surf::Error> for Error {
     }
 }
 
-use url;
 impl From<url::ParseError> for Error {
     fn from(bad_url: url::ParseError) -> Self {
         Error::InvalidUrl(bad_url.to_string())
