@@ -13,7 +13,7 @@ Add the following to your Cargo.toml:
 roku_ecp = "0.0.1"
 ```
 
-For usage, visit the [examples folder](./examples).
+For usage, view the [examples](./examples).
 
 # Available APIs
 

@@ -11,7 +11,7 @@ fn main() {
         let apps: Vec<&str> = apps.iter().map(|a| a.name.as_str()).collect();
         println!("Installed Apps: {:#?}", apps);
 
-        // search for keyword with priority given amongst installed apps
+        // search for keyword with priority given to installed apps
         let search = SearchRequest::new("Solar Opposites")
             .providers(&apps)
             .search_type(SearchType::TvShow)
