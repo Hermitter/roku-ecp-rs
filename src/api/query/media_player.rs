@@ -20,7 +20,7 @@ pub struct MediaPlayer {
     pub state: String,
     pub format: Option<Format>,
     pub buffering: Option<Buffering>,
-    pub new_stream: NewStream,
+    pub new_stream: Option<NewStream>,
     pub position: Option<String>,
     pub duration: Option<String>,
     pub is_live: Option<String>,
@@ -32,7 +32,7 @@ pub struct MediaPlayer {
 pub struct Format {
     pub audio: String,
     pub captions: String,
-    pub container: String,
+    pub container: Option<String>,
     pub drm: String,
     pub video: String,
     pub video_res: Option<String>,
