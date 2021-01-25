@@ -8,7 +8,7 @@ fn main() {
         let ip = std::env::var("ROKU_DEVICE_IP").expect("Could not find $ROKU_DEVICE_IP");
         let roku = Device::new(ip).unwrap();
 
-        // create image of Netflix icon
+        // create an image of the Netflix icon
         let icon = roku.icon("12").await.unwrap().bytes;
         let mut file = File::create("netflix_icon.png").unwrap();
         file.write_all(&icon).unwrap();
