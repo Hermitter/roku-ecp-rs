@@ -156,7 +156,7 @@ impl<'a> SearchRequest<'a> {
     }
 
     /// Treat the Search keyword as a title instead.
-    pub fn is_title(mut self) -> SearchRequest<'a> {
+    pub fn title(mut self) -> SearchRequest<'a> {
         self.is_title = true;
         self
     }
