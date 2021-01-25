@@ -4,7 +4,7 @@ use url::form_urlencoded;
 
 impl Device {
     /// Sends a URL query string from the search properties given.
-    pub async fn search<'a>(&self, search: SearchRequest<'a>) -> Result<(), Error> {
+    pub async fn search(&self, search: SearchRequest<'_>) -> Result<(), Error> {
         let mut url = self.url.join("search/browse")?;
         let mut query = form_urlencoded::Serializer::new(String::new());
 
