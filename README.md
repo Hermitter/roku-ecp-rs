@@ -16,7 +16,6 @@ roku_ecp = "0.0.1"
 For usage, visit the [examples folder](./examples).
 
 # Available APIs
-> Some APIs might be missing since I could not find documentation.
 
 ## General:
 - [x] query/media-player
