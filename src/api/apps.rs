@@ -9,7 +9,7 @@ impl Device {
         app_id: &str,
         parameters: Option<&[(&'a str, &'a str)]>,
     ) -> Result<(), Error> {
-        self.launch_action(app_id, parameters, false).await
+        self.app_action(app_id, parameters, false).await
     }
 
     /// Installs and launches a channel along with passing any given parameters.
@@ -18,12 +18,12 @@ impl Device {
         app_id: &str,
         parameters: Option<&[(&'a str, &'a str)]>,
     ) -> Result<(), Error> {
-        self.launch_action(app_id, parameters, true).await
+        self.app_action(app_id, parameters, true).await
     }
 
     /// Sends an ECP request to call to call either `/install` or `/launch` for
     /// a specific channel.
-    async fn launch_action<'a>(
+    async fn app_action<'a>(
         &self,
         app_id: &str,
         parameters: Option<&[(&'a str, &'a str)]>,
@@ -37,19 +37,22 @@ impl Device {
         let mut url = self.url.join(&format!("{}/{}", path, app_id))?;
 
         // create the query string to pass into the URL.
-        let query = parameters
-            .unwrap_or(&[])
-            .into_iter()
-            .fold(
-                form_urlencoded::Serializer::new(String::new()),
-                |mut query, q| {
-                    query.append_pair(q.0, q.1);
-                    query
-                },
-            )
-            .finish();
+        // NOTE: cannot confirm query strings work, despite the fact it's
+        // documented.
+        if let Some(query) = parameters {
+            let query = query
+                .into_iter()
+                .fold(
+                    form_urlencoded::Serializer::new(String::new()),
+                    |mut query, q| {
+                        query.append_pair(q.0, q.1);
+                        query
+                    },
+                )
+                .finish();
 
-        url.set_query(Some(&query));
+            url.set_query(Some(&query));
+        }
 
         self.http.post(url).await?;
         Ok(())
