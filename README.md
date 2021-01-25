@@ -6,12 +6,14 @@
 
 A Rust crate for Roku's [External Control Protocol](https://developer.roku.com/en-gb/docs/developer-program/debugging/external-control-api.md).
 
-# Usage
+# Installation
 Add the following to your Cargo.toml:
 ```
 [dependencies]
 roku_ecp = "0.0.1"
 ```
+
+For usage, visit the [examples folder](./examples).
 
 # Available APIs
 > Some APIs might be missing since I could not find documentation.
@@ -35,6 +37,22 @@ roku_ecp = "0.0.1"
 - [ ] query/tv-channels
 - [ ] query/tv-active-channel
 - [ ] launch/tvinput.dtv
+
+# Dependencies
+
+**Operating Systems**
+
+Windows and macOS: None
+
+Linux: OpenSSL + headers > v1.0.1
+- Debian: `sudo apt install libssl-dev`
+- Fedora: `sudo dnf install openssl-devel`
+
+**Async Runtime**
+
+This crate requires an asynchronous runtime such as
+[tokio](https://github.com/tokio-rs/tokio) or
+[async-std](https://github.com/async-rs/async-std).
 
 # Finding Your Roku Device's IP
 In the main menu, navigate to `Settings > Networking > About`.
