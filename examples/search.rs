@@ -8,7 +8,7 @@ fn main() {
 
         // get a list of installed apps
         let apps = roku.apps().await.unwrap();
-        let apps: Vec<&str> = apps.iter().map(|a| String::as_str(&a.name)).collect();
+        let apps: Vec<&str> = apps.iter().map(|a| a.name.as_str()).collect();
         println!("Installed Apps: {:#?}", apps);
 
         // search for keyword with priority given amongst installed apps
