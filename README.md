@@ -1,20 +1,20 @@
 # roku-ecp-rs
-> Under Development
+> Expect breaking changes until 0.1.0 since Roku ECP has incorrect/missing documentation. 
 
 [![Documentation](https://docs.rs/roku-ecp/badge.svg)](https://docs.rs/roku-ecp/)
 [![Crate](https://img.shields.io/crates/v/roku-ecp.svg)](https://crates.io/crates/roku-ecp)
 
 A Rust crate for Roku's [External Control Protocol](https://developer.roku.com/en-gb/docs/developer-program/debugging/external-control-api.md).
 
-<!-- # Usage
+# Usage
 Add the following to your Cargo.toml:
 ```
 [dependencies]
 roku_ecp = "0.0.1"
-``` -->
+```
 
 # Available APIs
-> Some APIs might be missing since I could not find concrete documentation.
+> Some APIs might be missing since I could not find documentation.
 
 ## General:
 - [x] query/media-player
