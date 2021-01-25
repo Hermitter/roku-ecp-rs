@@ -10,7 +10,7 @@ A Rust crate for Roku's [External Control Protocol](https://developer.roku.com/e
 Add the following to your Cargo.toml:
 ```
 [dependencies]
-roku_exp = "0.0.1"
+roku_ecp = "0.0.1"
 ``` -->
 
 # Available APIs
