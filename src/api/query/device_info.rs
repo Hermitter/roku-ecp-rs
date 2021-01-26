@@ -36,7 +36,7 @@ pub struct DeviceInfo {
     pub has_wifi_5g_support: bool,
     pub can_use_wifi_extender: bool,
     pub ethernet_mac: Option<String>,
-    pub bluetooth_mac: String,
+    pub bluetooth_mac: Option<String>,
     pub network_type: String,
     pub friendly_device_name: String,
     pub friendly_model_name: String,
