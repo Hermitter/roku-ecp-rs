@@ -36,7 +36,7 @@ impl Device {
         self.send_key_cmd(KeyEvent::Press, key).await
     }
 
-    /// Retrieves device information similar to that returned by [roDeviceInfo](https://developer.roku.com/en-gb/docs/references/brightscript/components/rodeviceinfo.md#!) for BrightScript.
+    /// Sends a key event to the Roku device.
     async fn send_key_cmd(&self, event: KeyEvent, key: Key) -> Result<(), Error> {
         let key_event = match event {
             KeyEvent::Up => "keyup",
