@@ -1,5 +1,5 @@
 # roku-ecp-rs
-> Expect breaking changes until 0.1.0 since Roku ECP has incorrect/missing documentation. 
+> Expect breaking changes until 0.1.0 since Roku has incorrect/missing documentation for ECP. 
 
 [![Documentation](https://docs.rs/roku-ecp/badge.svg)](https://docs.rs/roku-ecp/)
 [![Crate](https://img.shields.io/crates/v/roku-ecp.svg)](https://crates.io/crates/roku-ecp)
